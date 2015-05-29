@@ -111,8 +111,10 @@ namespace ZWaveLib.Devices
 
         public virtual bool MessageRequestHandler(byte[] receivedMessage)
         {
-            //Console.WriteLine("\n   _z_ [" + this.NodeId + "]  " + (this.DeviceHandler != null ? this.DeviceHandler.ToString() : "!" + this.GenericClass.ToString()));
-            //Console.WriteLine("   >>> " + zp.ByteArrayToString(receivedMessage) + "\n");
+#if DEBUG
+            Console.WriteLine("\n   _z_ [" + this.NodeId + "]  " + (this.DeviceHandler != null ? this.DeviceHandler.ToString() : "!" + this.GenericClass.ToString()));
+            Console.WriteLine("   >>> " + zwavePort.ByteArrayToString(receivedMessage) + "\n");
+#endif
             //
             bool handled = false;
             int messageLength = receivedMessage.Length;
